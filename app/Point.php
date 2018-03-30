@@ -1,5 +1,5 @@
 <?php
-namespace Bbc\MVC\Model;
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Point extends Model {
@@ -9,12 +9,12 @@ class Point extends Model {
 
     public function stations()
     {
-        return $this->belongsTo('Bbc\MVC\Model\Station');
+        return $this->belongsTo('Station');
     }
 
     public function users()
     {
-        return $this->belongsToMany('Bbc\MVC\Model\User');
+        return $this->belongsToMany('User');
     }
 
 

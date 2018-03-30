@@ -1,5 +1,5 @@
 <?php
-namespace Bbc\MVC\Model;
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Station extends Model {
@@ -9,7 +9,7 @@ class Station extends Model {
 
     public function points()
     {
-        return $this->hasMany('Bbc\MVC\Model\Point');
+        return $this->hasMany('Point');
     }
 
 
