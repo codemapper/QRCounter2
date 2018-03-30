@@ -27,7 +27,7 @@ class PointController extends Controller
     public function create()
     {
         $point = new Point;
-        $stations = Station::all();
+        $stations = Station::all()->pluck('name', 'id');
         return view('points.create', ['point' => $point ,'stations' =>$stations]);
     }
 
@@ -48,7 +48,7 @@ class PointController extends Controller
         $point = new Point();
         $point->value = $request['value'];
         $point->points = $request['points'];
-        $point->station_id = $request['station']+1;
+        $point->station_id = $request['station'];
 
         $point->save();
         return redirect('points');

@@ -13,16 +13,17 @@
                             <th>Name</th>
                             <th>Punkte</th>
                             <th>Station</th>
+                            <th><a href="{{ route('points.create') }}" type="button" class="btn btn-primary">+</a></th>
                         </tr>
                         @foreach ($points as $point)
                             <tr>
                                 <td>{{$point->value}}</td>
                                 <td>{{$point->points}}</td>
                                 <td>{{$point->station['name']}}</td>
+                                <td></td>
                             </tr>
                         @endforeach
                     </table>
-                        <a href="{{ route('points.create') }}" type="button" class="btn btn-primary">+</a>
                     </div>
                 </div>
             </div>
