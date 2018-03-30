@@ -7,14 +7,14 @@ class Point extends Model {
     protected $table = 'points';
     public $timestamps = true;
 
-    public function stations()
+    public function station()
     {
-        return $this->belongsTo('Station');
+        return $this->belongsTo('App\Station');
     }
 
     public function users()
     {
-        return $this->belongsToMany('Code');
+        return $this->belongsToMany('App\Code');
     }
 
 

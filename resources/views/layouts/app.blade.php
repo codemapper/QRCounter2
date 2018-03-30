@@ -42,8 +42,8 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link" href="{{ route('points.index') }}">{{ __('Punkte') }}</a>
                                     <a class="nav-link" href="{{ route('stations.index') }}">{{ __('Station') }}</a>
-                                    <a class="nav-link" href="{{ route('points.create') }}">{{ __('Punkte') }}</a>
                                     <a class="nav-link" href="{{ route('codes.index') }}">{{ __('Codes') }}</a>
                                 </div>
                             </li>
