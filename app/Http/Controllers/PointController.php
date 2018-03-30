@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PointController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
