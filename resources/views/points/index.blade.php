@@ -8,7 +8,7 @@
                     <div class="card-header">Dashboard</div>
                     <div class="card-body">
 
-                    <table>
+                    <table  class="table">
                         <tr>
                             <th>Name</th>
                             <th>Punkte</th>
