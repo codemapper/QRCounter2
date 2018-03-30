@@ -31,7 +31,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('model', 'Station') !!}
-                                {!! Form::select('station', $stations,  ['class' => 'form-control']) !!}
+                                {!! Form::select('station', $stations, null, ['class' => 'form-control']) !!}
                             </div>
 
 
