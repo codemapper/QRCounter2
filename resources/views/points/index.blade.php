@@ -20,7 +20,7 @@
                                 <td>{{$point->value}}</td>
                                 <td>{{$point->points}}</td>
                                 <td>{{$point->station['name']}}</td>
-                                <td></td>
+                                <td><a href="{{ route('points.edit', ['point' => $point->id]) }}">Edit</a></td>
                             </tr>
                         @endforeach
                     </table>

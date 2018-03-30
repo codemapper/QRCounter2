@@ -46,9 +46,9 @@ class PointController extends Controller
         ]);
 
         $point = new Point();
-        $point->value = $request['value'];
-        $point->points = $request['points'];
-        $point->station_id = $request['station'];
+        $point->value = $request->input('value');
+        $point->points = $request->input('points');
+        $point->station_id = $request->input('station');
 
         $point->save();
         return redirect('points');
@@ -62,7 +62,7 @@ class PointController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -73,7 +73,9 @@ class PointController extends Controller
      */
     public function edit($id)
     {
-        //
+        $point = Point::find($id);
+        $stations = Station::all()->pluck('name', 'id');
+        return view('points.edit', ['point' => $point ,'stations' =>$stations]);
     }
 
     /**
@@ -85,7 +87,19 @@ class PointController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'value' => 'required|max:255',
+            'points' => 'required',
+            'station' => 'required',
+        ]);
+
+        $point = Point::find($id);
+        $point->value = $request->input('value');
+        $point->points = $request->input('points');
+        $point->station_id = $request->input('station');
+
+        $point->save();
+        return redirect('points');
     }
 
     /**
