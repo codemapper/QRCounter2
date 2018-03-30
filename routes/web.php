@@ -16,10 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/scan', 'ScanController@index')->name('scan');
+Route::get('/scan/{station}', 'ScanController@points')->name('scan.station')->middleware('auth');
+Route::get('/scan/{station}/{point}','ScanController@scan')->name('scan.points')->middleware('auth');
+Route::get('/scan/{station}/{point}/store','ScanController@store')->name('scan.store')->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('points', 'PointController');
-Route::resource('stations', 'StationController');
+Route::resource('points', 'PointController')->middleware('auth');
+Route::resource('stations', 'StationController')->middleware('auth');
 Route::resource('codes', 'CodeController');

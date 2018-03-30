@@ -2,6 +2,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Code extends Model {
 
     protected $table = 'codes';
@@ -10,7 +11,7 @@ class Code extends Model {
 
     public function points()
     {
-        return $this->belongsToMany('Point');
+        return $this->belongsToMany('App\Point','codes_points');
     }
 
 

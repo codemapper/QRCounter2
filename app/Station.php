@@ -9,7 +9,7 @@ class Station extends Model {
 
     public function points()
     {
-        return $this->hasMany('Point');
+        return $this->hasMany('App\Point');
     }
 
 
