@@ -14,7 +14,7 @@ class Point extends Model {
 
     public function users()
     {
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('Code');
     }
 
 

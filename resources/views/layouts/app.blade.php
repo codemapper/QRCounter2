@@ -34,7 +34,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li><a class="nav-link" href="{{ route('scan') }}">{{ __('Scan') }}</a></li>
+                    @auth
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   Einstellungen
+                                </a>
 
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link" href="{{ route('stations.index') }}">{{ __('Station') }}</a>
+                                    <a class="nav-link" href="{{ route('points.create') }}">{{ __('Punkte') }}</a>
+                                    <a class="nav-link" href="{{ route('codes.index') }}">{{ __('Codes') }}</a>
+                                </div>
+                            </li>
+                    @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

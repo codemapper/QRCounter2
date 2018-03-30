@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/scan', 'ScanController@index')->name('scan');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('points', 'PointController');
+Route::resource('stations', 'StationController');
+Route::resource('codes', 'CodeController');
