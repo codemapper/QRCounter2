@@ -20,7 +20,7 @@
 
                         {!! Form::model($point, ['action' => 'PointController@store']) !!}
                         <div class="form-group">
-                            {!! Form::label('make', 'Wert') !!}
+                            {!! Form::label('make', 'Herausforderung') !!}
                             {!! Form::text('value', '', ['class' => 'form-control']) !!}
                         </div>
 
