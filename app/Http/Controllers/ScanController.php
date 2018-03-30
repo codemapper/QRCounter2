@@ -19,7 +19,8 @@ class ScanController extends Controller
 
     public function points($station)
     {
-        $points = Point::where('station_id',$station)->get();
+        $station = Station::find($station);
+        $points = Point::where('station_id',$station->id)->get();
         return view('scan.points',['station' => $station, 'points' => $points]);
     }
 
