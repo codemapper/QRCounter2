@@ -18,7 +18,6 @@
                             </div>
                         @endif
 
-
                             {!! Form::model($point, ['action' => ['PointController@update',$point],'method' => 'PUT']) !!}
                         <div class="form-group">
                             {!! Form::label('model', 'Station') !!}
