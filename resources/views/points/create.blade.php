@@ -18,12 +18,12 @@
                             </div>
                         @endif
 
-                        <div class="form-group">
-                           {!! Form::label('model', 'Station') !!}
-                           {!! Form::select('station', $stations, null, ['class' => 'form-control']) !!}
-                        </div>
 
                         {!! Form::model($point, ['action' => 'PointController@store']) !!}
+                        <div class="form-group">
+                            {!! Form::label('model', 'Station') !!}
+                            {!! Form::select('station', $stations, null, ['class' => 'form-control']) !!}
+                        </div>
                         <div class="form-group">
                             {!! Form::label('make', 'Herausforderung') !!}
                             {!! Form::text('value', '', ['class' => 'form-control']) !!}
