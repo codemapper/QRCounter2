@@ -116,6 +116,8 @@ class PointController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $point = Point::find($id);
+        $point->delete();
+        return redirect('points');
     }
 }
