@@ -11,8 +11,6 @@ class CodesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('codes')->insert([
-            'code' => 'test',
-        ]);
+
     }
 }

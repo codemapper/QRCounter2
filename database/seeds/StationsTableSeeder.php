@@ -11,14 +11,6 @@ class StationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('stations')->insert([
-            'name' => 'Game 1',
-        ]);
-        DB::table('stations')->insert([
-            'name' => 'Game 2',
-        ]);
-        DB::table('stations')->insert([
-            'name' => 'Game 3',
-        ]);
+
     }
 }

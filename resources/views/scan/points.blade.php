@@ -10,7 +10,7 @@
 
                         @foreach($points as $point)
 
-                            <p><a class="btn btn-primary btn-block" href="{!! route('scan.points',['station' => $station, 'point' => $point->id]) !!}">{{$point->value}}</a></p>
+                            <p><a class="btn btn-primary btn-block" href="{!! route('scan.points',['station' => $station, 'point' => $point->id]) !!}">{{$point->name}}</a></p>
 
                         @endforeach
                     </div>

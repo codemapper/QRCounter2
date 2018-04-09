@@ -46,13 +46,13 @@ class PointController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'value' => 'required|max:255',
+            'name' => 'required|max:255',
             'points' => 'required',
             'station' => 'required',
         ]);
 
         $point = new Point();
-        $point->value = $request->input('value');
+        $point->name = $request->input('name');
         $point->points = $request->input('points');
         $point->station_id = $request->input('station');
 
@@ -94,13 +94,13 @@ class PointController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'value' => 'required|max:255',
+            'name' => 'required|max:255',
             'points' => 'required',
             'station' => 'required',
         ]);
 
         $point = Point::find($id);
-        $point->value = $request->input('value');
+        $point->name = $request->input('name');
         $point->points = $request->input('points');
         $point->station_id = $request->input('station');
 

@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'GuestController@index')->name('home');
 
 Route::get('/scan', 'ScanController@index')->name('scan');
 Route::get('/scan/{station}', 'ScanController@points')->name('scan.station')->middleware('auth');

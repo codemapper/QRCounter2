@@ -17,7 +17,7 @@
                         </tr>
                         @foreach ($points as $point)
                             <tr>
-                                <td>{{$point->value}}</td>
+                                <td>{{$point->name}}</td>
                                 <td>{{$point->points}}</td>
                                 <td>{{$point->station['name']}}</td>
                                 <td><a class="btn btn-primary" href="{{ route('points.edit', ['point' => $point->id]) }}">Edit</a></td>
