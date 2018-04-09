@@ -35,6 +35,11 @@ class ScanController extends Controller
     {
         $code = $request->input('code');
         $code = Code::where('code',$code)->first();
+        if($code == null){
+            $code = new Code();
+            $code->code = $request->input('code');
+            $code->save();
+        }
         $code->points()->attach($point);
         $points = $code->points()->sum('points');
         $date = Carbon::create(1955,04,28);
