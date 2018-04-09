@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Station;
 use Illuminate\Http\Request;
 
 class StationController extends Controller
@@ -18,7 +19,8 @@ class StationController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        return view('stations.index', ['stations' => $stations]);
     }
 
     /**
@@ -28,7 +30,8 @@ class StationController extends Controller
      */
     public function create()
     {
-        //
+        $station = new Station();
+        return view('stations.create', ['station' =>$station]);
     }
 
     /**
@@ -40,8 +43,14 @@ class StationController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:points|max:255',
+            'name' => 'required|unique:stations|max:255',
         ]);
+
+        $station = new Station();
+        $station->name = $request->input('name');
+
+        $station->save();
+        return redirect('stations');
     }
 
     /**
@@ -63,7 +72,8 @@ class StationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $station = Station::find($id);
+        return view('stations.edit', ['station' =>$station]);
     }
 
     /**
@@ -75,7 +85,15 @@ class StationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:stations|max:255',
+        ]);
+
+        $station = Station::find($id);
+        $station->name = $request->input('name');
+
+        $station->save();
+        return redirect('stations');
     }
 
     /**
@@ -86,6 +104,8 @@ class StationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $station = Station::find($id);
+        $station->delete();
+        return redirect('stations');
     }
 }
