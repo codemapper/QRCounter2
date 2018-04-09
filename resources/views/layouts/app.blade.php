@@ -36,6 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('scan') }}">{{ __('Scan') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('log') }}">{{ __('Logbuch') }}</a></li>
                     @auth
                             @admin
                             <li class="nav-item dropdown">

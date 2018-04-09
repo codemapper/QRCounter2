@@ -45,4 +45,26 @@ class ScanController extends Controller
         $date = Carbon::create(1955,04,28);
         echo  $date->addYear($points)->format('Y') ;
     }
+
+    public function code(Request $request)
+    {
+        $code = $request->input('code');
+        $code = Code::where('code', $code)->first();
+        //return var_dump($code->points('name'));
+        $string = "";
+        if ($code != null) {
+            foreach ($code->points as $row) {
+                $string .= "<tr>";
+                $string .= "<td>" . $row->station->name . "</td>";
+                $string .= "<td>" . $row->name . "</td>";
+                $string .= "<td>" . $row->points . " Stunden</td>";
+                $string .= "<td>" . $row->created_at . "</td>";
+                $string .= "</tr>";
+            }
+        } else {
+            $string = "Code nicht gefunden!";
+        }
+
+        return $string;
+    }
 }
