@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('make', 'Herausforderung') !!}
-                            {!! Form::text('value', old('value'), ['class' => 'form-control']) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
