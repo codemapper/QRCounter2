@@ -13,13 +13,16 @@
                             <th>Name</th>
                             <th>Punkte</th>
                             <th>Station</th>
+                            @admin
                             <th colspan="2" ><a href="{{ route('points.create') }}" class="btn btn-primary">+</a></th>
+                            @endadmin
                         </tr>
                         @foreach ($points as $point)
                             <tr>
                                 <td>{{$point->name}}</td>
                                 <td>{{$point->points}}</td>
                                 <td>{{$point->station['name']}}</td>
+                                @admin
                                 <td><a class="btn btn-primary" href="{{ route('points.edit', ['point' => $point->id]) }}">Edit</a></td>
                                 <td>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['points.destroy', $point->id]]) }}
@@ -27,6 +30,7 @@
                                     {{ Form::close() }}
 
                                 </td>
+                                @endadmin
                             </tr>
                         @endforeach
                     </table>

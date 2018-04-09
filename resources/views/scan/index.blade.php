@@ -13,6 +13,7 @@
                             <p><a class="btn btn-primary btn-block" href="{!! route('scan.station',['station' => $station->id]) !!}">{{$station->name}}</a></p>
 
                         @endforeach
+
                     </div>
                 </div>
             </div>

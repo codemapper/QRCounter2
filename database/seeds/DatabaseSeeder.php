@@ -62,5 +62,21 @@ class DatabaseSeeder extends Seeder
             'points' => 15,
             'station_id' => 3,
         ]);
+
+        //users
+
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@bbcag.ch',
+            'password' => bcrypt('admin'),
+            'admin' => true,
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'operator',
+            'email' => 'operator@bbcag.ch',
+            'password' => bcrypt('operator'),
+            'admin' => false,
+        ]);
     }
 }

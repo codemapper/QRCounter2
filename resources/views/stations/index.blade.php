@@ -11,17 +11,21 @@
                     <table  class="table">
                         <tr>
                             <th>Name</th>
+                            @admin
                             <th colspan="2" ><a href="{{ route('stations.create') }}" class="btn btn-primary">+</a></th>
+                            @endadmin
                         </tr>
                         @foreach ($stations as $station)
                             <tr>
                                 <td>{{$station->name}}</td>
+                                @admin
                                 <td><a class="btn btn-primary" href="{{ route('stations.edit', ['$station' => $station->id]) }}">Edit</a></td>
                                 <td>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['stations.destroy', $station->id]]) }}
                                     {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                     {{ Form::close() }}
                                 </td>
+                                @endadmin
                             </tr>
                         @endforeach
                     </table>

@@ -37,6 +37,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('scan') }}">{{ __('Scan') }}</a></li>
                     @auth
+                            @admin
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    Einstellungen
@@ -48,6 +49,7 @@
                                     <a class="nav-link" href="{{ route('codes.index') }}">{{ __('Codes') }}</a>
                                 </div>
                             </li>
+                            @endadmin
                     @endauth
                     </ul>
 
