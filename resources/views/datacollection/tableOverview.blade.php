@@ -27,13 +27,13 @@
                         @else
                             @foreach ($codes as $code)
                                 <tr>
-                                    <td>{{ $code->question_prename }}</td>
-                                    <td>{{ $code->question_name }}</td>
-                                    <td>{{ $code->question_gender }}</td>
-                                    <td>{{ $code->question_alone }}</td>
-                                    <td>{{ $code->question_event }}</td>
-                                    <td>{{ $code->question_event_rating }}</td>
-                                    <td>{{ $code->question_loved_station }}</td>
+                                    <td>{{ str_limit($code->question_prename, 10) }}</td>
+                                    <td>{{ str_limit($code->question_name, 10) }}</td>
+                                    <td>{{ str_limit($code->question_gender, 10) }}</td>
+                                    <td>{{ str_limit($code->question_alone, 10) }}</td>
+                                    <td>{{ str_limit($code->question_event, 10) }}</td>
+                                    <td>{{ str_limit($code->question_event_rating, 10) }}</td>
+                                    <td>{{ str_limit($code->question_loved_station, 10) }}</td>
                                     <td>{{ link_to('/dataprotect/fetch?code=' . $code->id, $prices[$code->id] . ' CHF') }}</td>
                                 </tr>
                             @endforeach
