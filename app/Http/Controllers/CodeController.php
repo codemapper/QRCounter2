@@ -39,11 +39,11 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'code' => 'required|unique:code|max:255',
+            'code' => 'required|unique:codes|max:255',
         ]);
 
         $code = new Code();
-        $code->name = $request->input('code');
+        $code->code = $request->input('code');
 
         $code->save();
         return redirect('codes');
