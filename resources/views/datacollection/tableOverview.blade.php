@@ -17,7 +17,7 @@
                             <th>Event-Quelle</th>
                             <th>Event-Rating</th>
                             <th>Leiblingsposten</th>
-                            <th>Preise</th>
+                            <th>Preis</th>
                         </tr>
 
                         @if(!count($prices))
@@ -34,7 +34,7 @@
                                     <td>{{ $code->question_event }}</td>
                                     <td>{{ $code->question_event_rating }}</td>
                                     <td>{{ $code->question_loved_station }}</td>
-                                    <td>{{ $prices[$code->id] }} CHF</td>
+                                    <td>{{ link_to('/dataprotect/fetch?code=' . $code->id, $prices[$code->id] . ' CHF') }}</td>
                                 </tr>
                             @endforeach
                         @endif
