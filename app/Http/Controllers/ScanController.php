@@ -58,9 +58,13 @@ class ScanController extends Controller
             foreach ($code->points as $row) {
                 $string .= "<tr>";
                 $string .= "<td>" . $row->station->name . "</td>";
-                $string .= "<td>" . $row->name . "</td>";
                 $string .= "<td>" . $row->points . " Stunden</td>";
-                $string .= "<td>" . $row->created_at. "</td>";
+                if($row->pivot->created_at != null){
+                    $string .= "<td>" . $row->pivot->created_at->format('H:i:s'). "</td>";
+                } else {
+                    $string .= "<td></td>";
+                }
+
                 $string .= "</tr>";
             }
         } else {
@@ -75,6 +79,6 @@ class ScanController extends Controller
             $code = Code::where('code',$code)->first();
         }
         $send =  route('scan.code',['code' => $code]);
-        return view('guest.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
+        return view('scan.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
     }
 }
