@@ -19,14 +19,28 @@ class GuestController extends Controller
     }
 
     public function saldoCheck(Request $request, $point){
-        $code = $request->input('code');
+        $codeNumber = $request->input('code');
+        $code = Code::where('code',$codeNumber)->first();
         $point = Point::find($point);
-        $data = [
-            'data' => $point->name,
-            'redirect' => "/print/".$point->id,
-            'target' => "_blank",
-            'timeout' => 0
-        ];
+        $sum = $code->points()->sum('points');
+        $cost = abs($point->points);
+        if( $sum < $cost){
+            $data = [
+                'data' => "Leider hast mit <b>".$sum."</b> gesammelten Jahren, zu wenig Zeit für diesen Bon.",
+                'redirect' => "/",
+                'target' => "_self",
+                'timeout' => 2000
+            ];
+        } else {
+            $code->points()->attach($point);
+            $data = [
+                'data' => $point->name,
+                'redirect' => "/print/".$point->id,
+                'target' => "_blank",
+                'timeout' => 0
+            ];
+        }
+
         return json_encode($data);
     }
 
