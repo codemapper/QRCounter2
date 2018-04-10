@@ -29,6 +29,6 @@ Route::post('/datacollect/update', 'DataCollectionController@update')->name('col
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('points', 'PointController')->middleware('auth');
-Route::resource('stations', 'StationController')->middleware('auth');
-Route::resource('codes', 'CodeController')->middleware('auth');
+Route::resource('points', 'PointController')->middleware('admin');
+Route::resource('stations', 'StationController')->middleware('admin');
+Route::resource('codes', 'CodeController')->middleware('admin');
