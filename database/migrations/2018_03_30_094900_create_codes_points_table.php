@@ -13,7 +13,7 @@ class CreateCodesPointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('codes_points', function (Blueprint $table) {
+        Schema::create('code_point', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('code_id')->unsigned()->nullable();
             $table->foreign('code_id')->references('id')->on('codes')->onDelete('cascade');

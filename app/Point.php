@@ -9,7 +9,7 @@ class Point extends Model {
 
     public function codes()
     {
-        return $this->belongsToMany('App\Code','codes_points');
+        return $this->belongsToMany('App\Code')->withPivot('code_point', 'created_at')->withTimestamps();
     }
 
     public function station()

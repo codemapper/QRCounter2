@@ -28,7 +28,9 @@ class ScanController extends Controller
     {
         $station = Station::find($station);
         $point = Point::find($point);
-        return view('scan.scan',['station' => $station, 'point' => $point]);
+        $send = route('scan.store',['station' => $station, 'point' => $point]);
+        $redirect = route('scan.station',['station' => $station]);
+        return view('scan.scan',['station'=>$station,'point'=>$point,'send' => $send, 'redirect' => $redirect]);
     }
 
     public function store(Request $request, $station, $point)
@@ -56,9 +58,13 @@ class ScanController extends Controller
             foreach ($code->points as $row) {
                 $string .= "<tr>";
                 $string .= "<td>" . $row->station->name . "</td>";
-                $string .= "<td>" . $row->name . "</td>";
                 $string .= "<td>" . $row->points . " Stunden</td>";
-                $string .= "<td>" . $row->created_at . "</td>";
+                if($row->pivot->created_at != null){
+                    $string .= "<td>" . $row->pivot->created_at->format('H:i:s'). "</td>";
+                } else {
+                    $string .= "<td></td>";
+                }
+
                 $string .= "</tr>";
             }
         } else {
@@ -66,5 +72,13 @@ class ScanController extends Controller
         }
 
         return $string;
+    }
+
+    public function log($code = null){
+        if($code != null){
+            $code = Code::where('code',$code)->first();
+        }
+        $send =  route('scan.code',['code' => $code]);
+        return view('scan.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
     }
 }
