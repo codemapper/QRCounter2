@@ -69,4 +69,12 @@ class ScanController extends Controller
 
         return $string;
     }
+
+    public function log($code = null){
+        if($code != null){
+            $code = Code::where('code',$code)->first();
+        }
+        $send =  route('scan.code',['code' => $code]);
+        return view('guest.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
+    }
 }

@@ -15,12 +15,4 @@ class GuestController extends Controller
         return view('guest.index', ['station' =>$station,'point' => $point]);
     }
 
-
-    public function log($code = null){
-        if($code != null){
-            $code = Code::where('code',$code)->first();
-        }
-        $send =  route('scan.code',['code' => $code]);
-        return view('guest.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
-    }
 }
