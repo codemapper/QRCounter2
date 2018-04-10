@@ -33,5 +33,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="row justify-content-center" style="margin-top: 30px">
+            <div class="col-md-8">
+                <a class="btn btn-primary btn-block" href="{!! route('data.index') !!}">Zurück zum Scan</a>
+            </div>
+        </div>
     </div>
 @endsection
