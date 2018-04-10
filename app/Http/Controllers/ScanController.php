@@ -29,8 +29,7 @@ class ScanController extends Controller
         $station = Station::find($station);
         $point = Point::find($point);
         $send = route('scan.store',['station' => $station, 'point' => $point]);
-        $redirect = route('scan.station',['station' => $station]);
-        return view('scan.scan',['station'=>$station,'point'=>$point,'send' => $send, 'redirect' => $redirect,'target'=>'_self']);
+        return view('scan.scan',['station'=>$station,'point'=>$point,'route'=>$send,'parameter' =>'']);
     }
 
     public function store(Request $request, $station, $point)
@@ -45,13 +44,45 @@ class ScanController extends Controller
         $code->points()->attach($point);
         $points = $code->points()->sum('points');
         $date = Carbon::create(1955,04,28);
-        echo  $date->addYear($points)->format('Y') ;
+        $data = [
+            'data' => $date->addYear($points)->format('Y') ,
+            'redirect' => route('scan.station',['station' => $station]),
+            'target' => "_self",
+            'timeout' => 2000
+        ];
+        return json_encode($data);
     }
 
-    public function code(Request $request)
+    public function log(){
+
+        return view('scan.log',['route'=>'logResults','parameter' => '']);
+    }
+
+    public function logResults(Request $request){
+        $codeName = $request->input('code');
+        $table = "";
+        if($codeName != null){
+            $code = Code::where('code',$codeName)->first();
+            if($code != null){
+                $table = $this->code($code->code);
+            } else {
+                $table = "Keine Daten erfasst";
+            }
+        }
+
+        $data = [
+            'data' => $table,
+            'redirect' => null,
+            'target' => null,
+            'timeout' => 0
+        ];
+
+        return json_encode($data);
+    }
+
+    public function code($code)
     {
-        $code = $request->input('code');
-        $code = Code::where('code', $code)->first();
+        $code = Code::where('code', $code)->orderBy('created_at','desc')->first();
         //return var_dump($code->points('name'));
         $string = "";
         if ($code != null) {
@@ -74,11 +105,5 @@ class ScanController extends Controller
         return $string;
     }
 
-    public function log($code = null){
-        if($code != null){
-            $code = Code::where('code',$code)->first();
-        }
-        $send =  route('scan.code',['code' => $code]);
-        return view('scan.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
-    }
+
 }

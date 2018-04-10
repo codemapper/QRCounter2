@@ -11,30 +11,30 @@
             scanner = new Instascan.Scanner({mirror: true, video: prev});
         }
 
-//    var content = "test";
-        scanner.addListener('scan', function (content) {
+
+        scanner.addListener('scan', function (code) {
             scanner.stop;
             if (document.contains(prev)) {
                 prev.style.border = "thick solid #00FF00";
                 //prev.remove();
             }
             $.ajax({
-                url: "{!! $send !!}",
+                url: "{!! $route !!}",
                 type: 'get',
-                data: {"code": content, 'X-CSRF-Token': '{{ csrf_token() }}'},
-                success: function (data) {
-                    console.log(data);
-                    feedback.innerHTML = data;
+                data: {"code": code, 'X-CSRF-Token': '{{ csrf_token() }}'},
+                success: function (jsonData) {
+                    var data = JSON.parse(jsonData);
+                    console.log(data.data);
+                    feedback.innerHTML = data.data;
                     prev.style.border = "none";
 
-                    @if($redirect != null)
+                    if(data.redirect != null)
                     setTimeout(function () {
-                        window.open("{!! $redirect !!}","{!! $target !!}");
-                        if("{!! $target !!}" == "_blank"){
+                        window.open(data.redirect,data.target);
+                        if(data.target == "_blank"){
                             window.open("/","_self");
                         }
-                    }, 2000);
-                    @endif
+                    }, data.timeout);
                 }
             });
         });

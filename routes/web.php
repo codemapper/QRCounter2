@@ -14,14 +14,16 @@
 
 Route::get('/', 'GuestController@index')->name('home');
 Route::get('/coupon/{point}', 'GuestController@coupon')->name('coupon');
-Route::get('/print/{point}', 'GuestController@print')->name('print');
+Route::get('/saldoCheck/{point}', 'GuestController@saldoCheck')->name('coupon.saldoCheck');
+Route::get('/print/{point}', 'GuestController@print')->name('coupon.print');
 
 Route::get('/scan', 'ScanController@index')->name('scan');
 Route::get('/code', 'ScanController@code')->name('scan.code');
 Route::get('/scan/{station}', 'ScanController@points')->name('scan.station')->middleware('auth');
 Route::get('/scan/{station}/{point}','ScanController@scan')->name('scan.points')->middleware('auth');
 Route::get('/scan/{station}/{point}/store','ScanController@store')->name('scan.store')->middleware('auth');
-Route::get('/log/{code?}', 'ScanController@log')->name('log')->middleware('auth');
+Route::get('/log', 'ScanController@log')->name('log')->middleware('auth');
+Route::get('/logResults', 'ScanController@logResults')->name('logResults')->middleware('auth');
 
 Auth::routes();
 

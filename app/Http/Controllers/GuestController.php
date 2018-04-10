@@ -15,12 +15,22 @@ class GuestController extends Controller
 
     public function coupon($point){
         $point = Point::find($point);
-        $send = route('print',['point' => $point]);
-        $redirect = "/print/".$point->id;
-        return view('guest.coupon',['point'=>$point,'send' => $send, 'redirect' => $redirect,'target'=>'_blank']);
+        return view('guest.coupon',['point'=>$point,'route'=>'/saldoCheck/'.$point->id]);
     }
 
-    public function print($point){
+    public function saldoCheck(Request $request, $point){
+        $code = $request->input('code');
+        $point = Point::find($point);
+        $data = [
+            'data' => $point->name,
+            'redirect' => "/print/".$point->id,
+            'target' => "_blank",
+            'timeout' => 0
+        ];
+        return json_encode($data);
+    }
+
+    public function print(Request $request, $point){
         $point = Point::find($point);
         return view('guest.print',['name'=>$point->name]);
     }

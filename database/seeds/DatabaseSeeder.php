@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('points')->insert([
-            'name' => 'Trinken Bon',
+            'name' => 'Getränke Bon',
             'points' => -10,
             'station_id' => 2,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
