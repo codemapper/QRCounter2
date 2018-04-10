@@ -46,21 +46,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('points')->insert([
-            'name' => 'Essen: -20 Jahre',
+            'name' => 'Essens Bon',
             'points' => -20,
             'station_id' => 2,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('points')->insert([
-            'name' => 'Trinken: -10 Jahre',
+            'name' => 'Trinken Bon',
             'points' => -10,
             'station_id' => 2,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('points')->insert([
-            'name' => 'Süssigkeiten: -10 Jahre',
+            'name' => 'Süssigkeiten Bon',
             'points' => -10,
             'station_id' => 2,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

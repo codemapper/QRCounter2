@@ -13,7 +13,8 @@
 
 
 Route::get('/', 'GuestController@index')->name('home');
-
+Route::get('/coupon/{point}', 'GuestController@coupon')->name('coupon');
+Route::get('/print/{point}', 'GuestController@print')->name('print');
 
 Route::get('/scan', 'ScanController@index')->name('scan');
 Route::get('/code', 'ScanController@code')->name('scan.code');

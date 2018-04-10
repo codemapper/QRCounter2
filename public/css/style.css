@@ -17,3 +17,7 @@ video {
   width: 300px;
   height: 200px;
 }
+
+.bttf-font{
+  font-family: 'Orbitron', sans-serif;
+}

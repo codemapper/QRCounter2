@@ -29,7 +29,10 @@
 
                     @if($redirect != null)
                     setTimeout(function () {
-                        document.location.href = "{!! $redirect !!}";
+                        window.open("{!! $redirect !!}","{!! $target !!}");
+                        if("{!! $target !!}" == "_blank"){
+                            window.open("/","_self");
+                        }
                     }, 2000);
                     @endif
                 }

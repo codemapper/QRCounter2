@@ -30,7 +30,7 @@ class ScanController extends Controller
         $point = Point::find($point);
         $send = route('scan.store',['station' => $station, 'point' => $point]);
         $redirect = route('scan.station',['station' => $station]);
-        return view('scan.scan',['station'=>$station,'point'=>$point,'send' => $send, 'redirect' => $redirect]);
+        return view('scan.scan',['station'=>$station,'point'=>$point,'send' => $send, 'redirect' => $redirect,'target'=>'_self']);
     }
 
     public function store(Request $request, $station, $point)

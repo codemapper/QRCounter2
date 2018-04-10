@@ -10,9 +10,19 @@ use Illuminate\Http\Request;
 class GuestController extends Controller
 {
     public function index(){
-        $station = Station::where('name','Gast-Scanner')->first();
-        $point = Point::where('name','Lesen')->first();
-        return view('guest.index', ['station' =>$station,'point' => $point]);
+        return view('guest.index');
+    }
+
+    public function coupon($point){
+        $point = Point::find($point);
+        $send = route('print',['point' => $point]);
+        $redirect = "/print/".$point->id;
+        return view('guest.coupon',['point'=>$point,'send' => $send, 'redirect' => $redirect,'target'=>'_blank']);
+    }
+
+    public function print($point){
+        $point = Point::find($point);
+        return view('guest.print',['name'=>$point->name]);
     }
 
 }
