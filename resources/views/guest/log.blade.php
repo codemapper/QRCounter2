@@ -1,11 +1,11 @@
 @extends('layouts.guest')
 
 @section('content')
-    @include('includes.instascan_code')
+    @include('includes.instascan')
 
     <video id="prev" width="320" autoplay="autoplay" height="240">
         Your browser does not support the video tag.
     </video>
 
-    <table id="logTable"></table>
+    <table class="table" id="feedback"></table>
 @endsection

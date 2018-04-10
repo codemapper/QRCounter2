@@ -20,6 +20,7 @@ class GuestController extends Controller
         if($code != null){
             $code = Code::where('code',$code)->first();
         }
-        return view('guest.log',['code' =>$code]);
+        $send =  route('scan.code',['code' => $code]);
+        return view('guest.log',['code' =>$code,'send' =>$send, 'redirect' => null]);
     }
 }

@@ -28,7 +28,9 @@ class ScanController extends Controller
     {
         $station = Station::find($station);
         $point = Point::find($point);
-        return view('scan.scan',['station' => $station, 'point' => $point]);
+        $send = route('scan.store',['station' => $station, 'point' => $point]);
+        $edirect = route('scan.station',['station' => $station]);
+        return view('scan.scan',['station'=>$station,'point'=>$point,'send' => $send, 'redirect' => $edirect]);
     }
 
     public function store(Request $request, $station, $point)
@@ -58,7 +60,7 @@ class ScanController extends Controller
                 $string .= "<td>" . $row->station->name . "</td>";
                 $string .= "<td>" . $row->name . "</td>";
                 $string .= "<td>" . $row->points . " Stunden</td>";
-                $string .= "<td>" . $row->created_at . "</td>";
+                $string .= "<td>" . $row->created_at. "</td>";
                 $string .= "</tr>";
             }
         } else {

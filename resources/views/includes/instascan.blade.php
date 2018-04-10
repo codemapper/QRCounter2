@@ -16,19 +16,22 @@
             scanner.stop;
             if (document.contains(prev)) {
                 prev.style.border = "thick solid #00FF00";
-                prev.remove();
+                //prev.remove();
             }
             $.ajax({
-                url: "{!! route('scan.store',['station' => $station, 'point' => $point]) !!}",
+                url: "{!! $send !!}",
                 type: 'get',
                 data: {"code": content, 'X-CSRF-Token': '{{ csrf_token() }}'},
                 success: function (data) {
                     console.log(data);
-                    years.innerHTML = data;
+                    feedback.innerHTML = data;
+                    prev.style.border = "none";
 
+                    @if($redirect != null)
                     setTimeout(function () {
-                        document.location.href = "{!! route('scan.station',['station' => $station]) !!}";
+                        document.location.href = "{!! $redirect !!}";
                     }, 2000);
+                    @endif
                 }
             });
         });

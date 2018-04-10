@@ -14,7 +14,7 @@
                         <video id="prev" width="320" autoplay="autoplay" height="240">
                             Your browser does not support the video tag.
                         </video>
-                        <p id="years" class="digit"></p>
+                        <p id="feedback" class="digit"></p>
 
                     </div>
                 </div>
