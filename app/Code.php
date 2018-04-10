@@ -11,7 +11,10 @@ class Code extends Model {
 
     public function points()
     {
-        return $this->belongsToMany('App\Point','codes_points')->withTimestamps();
+        return $this
+            ->belongsToMany('App\Point')
+            ->orderBy('code_point.created_at','desc')
+            ->withTimestamps();
     }
 
 
