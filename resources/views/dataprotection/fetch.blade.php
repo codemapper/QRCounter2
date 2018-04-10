@@ -73,6 +73,10 @@
                                 <td>{{ $code->question_loved_station }}</td>
                             </tr>
                             <tr>
+                                <th>Anzahl Posten</th>
+                                <td>{{ $numberOfVisits }}</td>
+                            </tr>
+                            <tr>
                                 <th>Preis</th>
                                 <td><b>{{ $price }} CHF</b></td>
                             </tr>

@@ -36,11 +36,12 @@ class DataProtectionController extends Controller
         return view('dataprotection.fetch', [
             'history' => $history,
             'code' => $code,
-            'price' => $this->getPrice($code),
+            'numberOfVisits' => count($points),
+            'price' => $this->getPrice($code, count($points)),
         ]);
     }
 
-    private function getPrice($code)
+    private function getPrice($code, $numberOfPoints)
     {
         $price = 0;
 
@@ -65,6 +66,8 @@ class DataProtectionController extends Controller
         if (!empty($code->question_loved_station)) {
             $price += 15;
         }
+
+        $price += $numberOfPoints * 10;
 
         return $price;
     }

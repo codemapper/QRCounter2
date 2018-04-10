@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Code;
+use App\CodePoint;
 use Illuminate\Http\Request;
 
 class DataCollectionController extends Controller
@@ -45,19 +46,24 @@ class DataCollectionController extends Controller
     {
         $codes = Code::all();
         $prices = [];
+        $numberOfVisits = [];
 
         foreach ($codes as $code) {
-            $price = $this->getPrice($code);
+            $points = CodePoint::where('code_id', $code->id)->get();
+            $visits = count($points);
 
+            $price = $this->getPrice($code, $visits);
             if ($price > 0) {
                 $prices[$code->id] = $price;
             }
+
+            $numberOfVisits[$code->id] = $visits;
         }
 
-        return view('datacollection.tableOverview', ['codes' => $codes, 'prices' => $prices]);
+        return view('datacollection.tableOverview', ['codes' => $codes, 'prices' => $prices, 'numberOfVisits' => $numberOfVisits]);
     }
 
-    private function getPrice($code)
+    private function getPrice($code, $numberOfPoints)
     {
         $price = 0;
 
@@ -82,6 +88,8 @@ class DataCollectionController extends Controller
         if (!empty($code->question_loved_station)) {
             $price += 15;
         }
+
+        $price += $numberOfPoints * 10;
 
         return $price;
     }

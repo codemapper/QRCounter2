@@ -17,6 +17,7 @@
                             <th>Event-Quelle</th>
                             <th>Event-Rating</th>
                             <th>Leiblingsposten</th>
+                            <th>Anzahl Posten</th>
                             <th>Preis</th>
                         </tr>
 
@@ -34,6 +35,7 @@
                                     <td>{{ str_limit($code->question_event, 10) }}</td>
                                     <td>{{ str_limit($code->question_event_rating, 10) }}</td>
                                     <td>{{ str_limit($code->question_loved_station, 10) }}</td>
+                                    <td>{{ $numberOfVisits[$code->id] }}</td>
                                     <td>{{ link_to('/dataprotect/fetch?code=' . $code->id, $prices[$code->id] . ' CHF') }}</td>
                                 </tr>
                             @endforeach
