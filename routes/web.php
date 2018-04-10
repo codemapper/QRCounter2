@@ -21,6 +21,10 @@ Route::get('/scan/{station}/{point}', 'ScanController@scan')->name('scan.points'
 Route::get('/scan/{station}/{point}/store', 'ScanController@store')->name('scan.store')->middleware('auth');
 Route::get('/dataprotect', 'DataProtectionController@index')->name('data.index')->middleware('auth');
 Route::get('/dataprotect/fetch', 'DataProtectionController@fetch')->name('data.fetch')->middleware('auth');
+Route::get('/datacollect', 'DataCollectionController@index')->name('collect.index')->middleware('auth');
+Route::get('/datacollect/collect', 'DataCollectionController@collect')->name('collect.collect')->middleware('auth');
+Route::get('/datacollect/table', 'DataCollectionController@tableOverview')->name('collect.table')->middleware('auth');
+Route::post('/datacollect/update', 'DataCollectionController@update')->name('collect.update')->middleware('auth');
 
 Auth::routes();
 

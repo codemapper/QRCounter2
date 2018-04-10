@@ -8,8 +8,6 @@ class CreateCodesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -17,13 +15,18 @@ class CreateCodesTable extends Migration
             $table->increments('id');
             $table->text('code');
             $table->timestamps();
+            $table->text('question_prename')->nullable();
+            $table->text('question_name')->nullable();
+            $table->text('question_gender')->nullable();
+            $table->text('question_alone')->nullable();
+            $table->text('question_event')->nullable();
+            $table->text('question_event_rating')->nullable();
+            $table->text('question_loved_station')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -12,7 +12,7 @@
         }
 
         scanner.addListener('scan', function (content) {
-            window.location.replace("{!! route('data.fetch') !!}" + '?code='+content);
+            window.location.replace("{!! route('collect.collect') !!}" + '?code='+content);
         });
 
         var entityMap = {

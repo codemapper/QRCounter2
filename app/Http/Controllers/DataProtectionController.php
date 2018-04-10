@@ -11,10 +11,7 @@ class DataProtectionController extends Controller
 {
     public function index()
     {
-        $station = Station::where('name', 'Gast-Scanner')->first();
-        $point = Point::where('name', 'Lesen')->first();
-
-        return view('dataprotection.index', ['station' => $station, 'point' => $point]);
+        return view('dataprotection.index');
     }
 
     public function fetch(Request $request)
