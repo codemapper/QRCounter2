@@ -21,6 +21,11 @@ class GuestController extends Controller
     public function saldoCheck(Request $request, $point){
         $codeNumber = $request->input('code');
         $code = Code::where('code',$codeNumber)->first();
+        if($code == null){
+            $code = new Code();
+            $code->code = $codeNumber;
+            $code->save();
+        }
         $point = Point::find($point);
         $sum = $code->points()->sum('points');
         $cost = abs($point->points);
