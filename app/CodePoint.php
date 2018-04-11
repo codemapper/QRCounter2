@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CodePoint extends Model
 {
-    protected $table = 'codes_points';
+    protected $table = 'code_point';
 }

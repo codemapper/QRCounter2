@@ -21,8 +21,8 @@ class DataProtectionController extends Controller
 
         $codeId = $request->input('code');
 
-        $code = Code::where('id', $codeId)->first();
-        $points = CodePoint::where('code_id', $codeId)->get();
+        $code = Code::where('code', $codeId)->first();
+        $points = CodePoint::where('code_id', $code->id)->get();
         foreach ($points as $point) {
             $ppoint = Point::where('id', $point->point_id)->first();
             $station = Station::where('id', $ppoint->station_id)->first();

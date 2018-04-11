@@ -20,6 +20,16 @@
                         <li><a class="nav-link" href="{{ route('scan') }}">{{ __('Scan') }}</a></li>
                         <li><a class="nav-link" href="{{ route('log') }}">{{ __('Logbuch') }}</a></li>
                     @auth
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Datenschutz
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link" href="{{ route('collect.index') }}">{{ __('Umfrage') }}</a>
+                                    <a class="nav-link" href="{{ route('data.index') }}">{{ __('Daten') }}</a>
+                                </div>
+                            </li>
                             @admin
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

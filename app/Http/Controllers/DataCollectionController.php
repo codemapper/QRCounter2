@@ -17,7 +17,7 @@ class DataCollectionController extends Controller
     {
         $Rcode = $request->input('code');
 
-        $code = Code::find($Rcode);
+        $code = Code::where('code',$Rcode)->first();
 
         return view('datacollection.collect', ['code' => $code]);
     }
@@ -25,7 +25,12 @@ class DataCollectionController extends Controller
     public function update(Request $request)
     {
         $Rcode = $request->input('code');
-        $code = Code::find($Rcode);
+        $code = Code::where('code',$Rcode)->first();
+        if($code == null){
+            $code = new Code();
+            $code->code = $Rcode;
+            $code->save();
+        }
 
         $code->question_prename = $request->input('question_prename');
         $code->question_name = $request->input('question_name');
