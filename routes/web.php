@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', 'GuestController@index')->name('home');
 Route::get('/coupon/{point}', 'GuestController@coupon')->name('coupon');
 Route::get('/saldoCheck/{point}', 'GuestController@saldoCheck')->name('coupon.saldoCheck');
@@ -20,10 +19,19 @@ Route::get('/print/{point}', 'GuestController@print')->name('coupon.print');
 Route::get('/scan', 'ScanController@index')->name('scan');
 Route::get('/code', 'ScanController@code')->name('scan.code');
 Route::get('/scan/{station}', 'ScanController@points')->name('scan.station')->middleware('auth');
+Route::get('/scan/{station}/{point}', 'ScanController@scan')->name('scan.points')->middleware('auth');
+Route::get('/scan/{station}/{point}/store', 'ScanController@store')->name('scan.store')->middleware('auth');
 Route::get('/scan/{station}/{point}','ScanController@scan')->name('scan.points')->middleware('auth');
 Route::get('/scan/{station}/{point}/store','ScanController@store')->name('scan.store')->middleware('auth');
 Route::get('/log', 'ScanController@log')->name('log')->middleware('auth');
 Route::get('/logResults', 'ScanController@logResults')->name('logResults')->middleware('auth');
+
+Route::get('/dataprotect', 'DataProtectionController@index')->name('data.index')->middleware('auth');
+Route::get('/dataprotect/fetch', 'DataProtectionController@fetch')->name('data.fetch')->middleware('auth');
+Route::get('/datacollect', 'DataCollectionController@index')->name('collect.index')->middleware('auth');
+Route::get('/datacollect/collect', 'DataCollectionController@collect')->name('collect.collect')->middleware('auth');
+Route::get('/datacollect/table', 'DataCollectionController@tableOverview')->name('collect.table')->middleware('auth');
+Route::post('/datacollect/update', 'DataCollectionController@update')->name('collect.update')->middleware('auth');
 
 Auth::routes();
 
